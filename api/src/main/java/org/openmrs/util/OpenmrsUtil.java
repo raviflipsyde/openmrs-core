@@ -1174,6 +1174,22 @@ public class OpenmrsUtil {
 			throw new APIException("should.be.directory", new Object[] { folder.getAbsolutePath() });
 		}
 		
+		// if the folder path is not canonical, assume the path mentioned was unsafe (directory traversal)
+		
+		try{
+
+			if(!folder.getAbsolutePath().equals(folder.getCanonicalPath()))
+			throw new APIException("should.be.canonical.path", new Object[] { folder.getAbsolutePath() });
+        
+		}
+		catch (IOException e) {
+			log.warn("Exception while checking canonical path");
+		}
+
+		
+		
+		
+		
 		return folder;
 	}
 	

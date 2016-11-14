@@ -205,8 +205,9 @@ public class ModuleFileParser {
 					}
 					catch (Exception e3) {}
 				}
-				
-				log.error("config.xml content: " + output);
+				//Not a good idea to log the config files to logs
+				// could reveal passwords
+				//log.error("config.xml content: " + output);
 				throw new ModuleException(
 				        Context.getMessageSourceService().getMessage("Module.error.cannotParseConfigFile"), moduleFile
 				                .getName(), e);
