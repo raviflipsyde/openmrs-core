@@ -82,7 +82,7 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 			
 			sql = "select person_id, concept_id, comments, creator, date_created, uuid, reaction_concept_id, severity, allergy_type "
 			        + "from active_list al inner join active_list_allergy ala on al.active_list_id=ala.active_list_id "
-			        + "where voided = 0 and active_list_type_id = ?" + allergyTypeId;
+			        + "where voided = 0 and active_list_type_id = ?" ;
 			
 			PreparedStatement allergyActiveSelectStatement = connection.prepareStatement(sql);
 			allergyActiveSelectStatement.setInt(1,allergyTypeId);
